@@ -3,7 +3,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-class MergeSorter implements Sorter {
+
+
+public class MergeSorter implements Sorter {
     @Override
     public ArrayList<Integer> sort(ArrayList<Integer> input) {
         if (input.size() <= 1) {
@@ -11,8 +13,9 @@ class MergeSorter implements Sorter {
         }
 
         int middle = input.size() / 2;
+        int mid = input.size() / 2;
         ArrayList<Integer> left = new ArrayList<>(input.subList(0, middle));
-        ArrayList<Integer> right = new ArrayList<>(input.subList(middle, input.size()));
+        ArrayList<Integer> right = new ArrayList<>(input.subList(mid, input.size()));
 
         left = sort(left);
         right = sort(right);
@@ -40,3 +43,4 @@ class MergeSorter implements Sorter {
         return result;
     }
 }
+

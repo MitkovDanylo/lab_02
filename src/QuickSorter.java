@@ -3,25 +3,28 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-class QuickSorter implements Sorter {
+import java.util.ArrayList;
+
+public class QuickSorter implements Sorter {
     @Override
     public ArrayList<Integer> sort(ArrayList<Integer> input) {
         if (input.size() <= 1) {
             return input;
         }
 
-        int pivot = input.get(input.size() / 2);
+        int pivotIndex = input.size() / 2;
+        int pivot = input.get(pivotIndex);
         ArrayList<Integer> less = new ArrayList<>();
         ArrayList<Integer> equal = new ArrayList<>();
         ArrayList<Integer> greater = new ArrayList<>();
 
-        for (int num : input) {
-            if (num < pivot) {
-                less.add(num);
-            } else if (num == pivot) {
-                equal.add(num);
+        for (int i = 0; i < input.size(); i++) {
+            if (i == pivotIndex) {
+                equal.add(input.get(i));
+            } else if (input.get(i) < pivot) {
+                less.add(input.get(i));
             } else {
-                greater.add(num);
+                greater.add(input.get(i));
             }
         }
 
@@ -32,9 +35,4 @@ class QuickSorter implements Sorter {
 
         return result;
     }
-}
-
-// Ваш enum
-enum SortingType {
-    BUBBLE, SHELL, MERGE, QUICK
 }
